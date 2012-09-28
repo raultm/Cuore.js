@@ -50,17 +50,28 @@
         <script src="../src/Services/Cuore.Services.Label.js" type="text/javascript"></script>
         <script src="../src/Services/Cuore.Services.Null.js" type="text/javascript"></script>
 
-        <script src="js/ShowCasePage.js" type="text/javascript"></script>
+        <script src="js/Example001Page.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             
             CUORE.Dom.ready(function() {
-            	document.page = new CUORE.Page();
+            	// Obvious! Get the language Eg: es-ES, en-US, en-GB
+            	var currentLocale = (navigator.language || navigator.browserLanguage);
+            	//Set the labels in different languages. Advanced : Localization files
+            	document.labels = {};
+                document.labels[currentLocale] = {
+                    "label.greeting": "¡Hola Bastardo!",
+                };
+                // By now, we're going to ommit this part
+                //CUORE.Bus.enableDebug();
+                // new Page
+            	document.page = new Example001Page();
+            	document.page.draw();
             });
             
         </script>
     </head>
     <body>
-    	<h1>Hi Bastard!</h1>    
+    	<h1 id="labelGreeting">Hi Bastard!</h1>    
     </body>
 </html>
